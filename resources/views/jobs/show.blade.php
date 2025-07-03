@@ -120,11 +120,7 @@
     @endif
     @if($job->company_website)
     <a
-        href="{{$job->company_website}}"
-        target="_blank"
-        class="text-blue-500"
-        >Visit Website</a
-    >
+        href="{{$job->company_website}}" target="_blank" class="text-blue-500">Visit Website</a>
     @endif
     <a
         href=""
