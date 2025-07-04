@@ -18,7 +18,7 @@
     <x-top-banner />
   @endif
   
-  <main class="container mx-auto p-4 mt-4">
+  <main class="container mx-auto p-4 mt-4" role="main">
     {{-- Display success alert message --}}
     @if(session('success'))
       <x-alert type="success" message="{{session('success')}}" />
