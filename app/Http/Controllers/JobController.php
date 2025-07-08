@@ -125,7 +125,9 @@ class JobController extends Controller
         if ($request->hasFile('company_logo')) {
 
             // Delete old logo
-            Storage::delete('public/logos' . basename($job->company_logo));
+            //Storage::delete('public/logos' . basename($job->company_logo));
+            Storage::disk('public')->delete($job->company_logo);
+
 
             // store the file and get path
             $path = $request->file('company_logo')->store('logos', 'public');
@@ -148,7 +150,9 @@ class JobController extends Controller
         $this->authorize('delete', $job);
         // if logo then delete it
         if ($job->company_logo) {
-            Storage::delete('public/logos' . $job->company_name);
+            //Storage::delete('public/logos' . $job->company_name);
+            Storage::disk('public')->delete($job->company_logo);
+
         }
 
         $job->delete();

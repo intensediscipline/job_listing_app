@@ -5,13 +5,18 @@
       <h3 class="text-3xl text-center font-bold mb-4">
         Profile Info
       </h3>
-
+      @if($user->profile_image) 
+        <div class="mt-2 flex justify-center">
+          <img class="w-32 h-32 object-cover rounded-full" src="{{asset('storage/' . $user->profile_image)}}" alt="{{$user->name}}" />
+        </div>
+      @endif
       <form action="{{route('profile.update')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <x-inputs.text id="name" name="name" label="Name" value="{{$user->name}}"/>
         <x-inputs.text id="email" name="email" label="Email" type="email" value="{{$user->email}}" />
+        <x-inputs.file id="profile_image" name="profile_image" />
 
         <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 border-rounded focus:outline:none">Save</button>
       </form>
