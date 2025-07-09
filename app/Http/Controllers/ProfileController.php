@@ -23,8 +23,8 @@ class ProfileController extends Controller
             'profile_image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
         ]);
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
 
         // check for file
         if ($request->hasFile('profile_image')) {
@@ -33,7 +33,8 @@ class ProfileController extends Controller
                 Storage::disk('public')->delete($user->profile_image);
             }
             // store the file and get path
-            $path = $request->file('profile_image')->store('profile_images', 'public');
+            //$path = $request->file('profile_image')->store('profile_images', 'public');
+            $path = $validatedData['profile_image']->store('profile_images', 'public');
 
             // add path
             $user->profile_image = $path;
