@@ -15,7 +15,7 @@ class JobController extends Controller
     use AuthorizesRequests;
     public function index(): View
     {
-        $jobs = Job::all();
+        $jobs = Job::paginate(3);
 
         return view('jobs.index', compact('jobs'));
     }
