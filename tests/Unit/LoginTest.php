@@ -56,4 +56,21 @@ class LoginTest extends TestCase
 
         $response->assertRedirect('/login');
     }
+
+    public function test_user_can_see_the_dashboard()
+    {
+        $this->assertDatabaseHas('users', [
+            'email' => $this->user->email,
+            'password' => $this->user->password
+        ]);
+
+        $response = $this->post('/login', [
+            'email' => $this->user->email,
+            'password' => 'password123',
+        ]);
+
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
+        $this->assertAuthenticatedAs($this->user);
+    }
 }

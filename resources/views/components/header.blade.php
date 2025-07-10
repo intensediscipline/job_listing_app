@@ -11,6 +11,15 @@
             <x-nav-link url="/dashboard" :active="request()->is('dashboard')" icon="gauge">Dashboard</x-nav-link>
             <x-logout-button />
             <x-button-link url="/jobs/create" icon="edit">Create Job</x-button-link>
+            <div class="flex items-center space-x-3">
+                <a href="{{route('dashboard')}}">
+                    @if(Auth::user()->profile_image)
+                        <img src="{{asset('storage/' . Auth::user()->profile_image)}}" alt="{{Auth::user()->name}}" class="w-10 h-10 rounded-full" />
+                    @else
+                        <img src="{{asset('storage/profile_images/download.png')}}" alt="profile" class="w-10 h-10 rounded-full" />
+                    @endif
+                </a>
+            </div>
             @else
             <x-nav-link url="/login" :active="request()->is('login')">Login</x-nav-link>
             <x-nav-link url="/register" :active="request()->is('register')">Register</x-nav-link>
@@ -30,7 +39,7 @@
         <x-nav-link url="/jobs/saved" :active="request()->is('jobs/saved')" :mobile="true">Saved Jobs</x-nav-link>
         <x-nav-link url="/dashboard" :active="request()->is('dashboard')" :mobile="true">Dashboard</x-nav-link>
         <div class="px-4">
-<x-logout-button />
+            <x-logout-button />
         </div>    
         <div class="pt-2"></div>
         <x-button-link url="/jobs/create" icon="edit" :block="true">Create Job</x-button-link>
