@@ -34,4 +34,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/bookmarks', [BookmarkController::class, 'index'])->name(name: 'bookmarks.index');
     Route::post('/bookmarks/{job}', [BookmarkController::class, 'store'])->name(name: 'bookmarks.store');
+    Route::delete('/bookmarks/{job}', [BookmarkController::class, 'destroy'])->name(name: 'bookmarks.destroy');
 });
