@@ -32,5 +32,6 @@ Route::put('/profile', [ProfileController::class, 'update'])->name('profile.upda
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.index');
+    Route::get('/bookmarks', [BookmarkController::class, 'index'])->name(name: 'bookmarks.index');
+    Route::post('/bookmarks/{job}', [BookmarkController::class, 'store'])->name(name: 'bookmarks.store');
 });
