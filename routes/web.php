@@ -38,4 +38,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/bookmarks/{job}', [BookmarkController::class, 'store'])->name(name: 'bookmarks.store');
     Route::delete('/bookmarks/{job}', [BookmarkController::class, 'destroy'])->name(name: 'bookmarks.destroy');
     Route::post('/jobs/{job}/apply', [ApplicantController::class, 'store'])->name(name: 'applicant.store');
+    Route::delete('/applicants/{applicant}', [ApplicantController::class, 'destroy'])->name(name: 'applicant.destroy');
 });

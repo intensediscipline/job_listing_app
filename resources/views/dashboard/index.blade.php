@@ -47,7 +47,7 @@
         </div>
       </div>
       {{-- applicants --}}
-      <div class="mt-4">
+      <div class="mt-4 bg-amber-50 p-2">
         <h4 class="text-lg font-semibold mb-2">Applicants</h4>
         @forelse($job->applicants as $applicant)
           <div class="py-2">
@@ -63,14 +63,20 @@
             <p class="text-gray-800">
               <strong>Message: </strong> {{ $applicant->message }}
             </p>
-            <p class="text-gray-800 my-4">
-              <a href="{{asset('storage/' . $applicant->cv_path)}}" class="text-blue-500 hover:underline" download>
+            <p class="text-gray-800 mt-2">
+              <a href="{{asset('storage/' . $applicant->cv_path)}}" class="text-blue-500 hover:underline text-sm" download>
                 <i class="fas fa-download"></i> Download CV
               </a>
             </p>
+            {{-- delete applicant --}}
+            <form action="{{route('applicant.destroy', $applicant->id)}}" method="post" onsubmit="return confirm('Are you sure you want to delete this applicant?')">
+              @csrf
+              @method('DELETE')
+              <button class="text-red-500 hover:text-red-700 text-sm" type="aubmit"><i class="fas fa-trash"></i> Delete Applicant</button>
+            </form>
           </div>
         @empty
-          <p class="gray-700">There are no applicants for this job</p>
+          <p class="gray-700 mb-5">There are no applicants for this job</p>
         @endforelse
       </div>
     @empty
