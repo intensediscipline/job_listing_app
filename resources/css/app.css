@@ -23,3 +23,7 @@
 .hero {
     background-image: url("/public/images/hero.jpg");
 }
+
+[x-cloak] {
+    display: none !important;
+}
