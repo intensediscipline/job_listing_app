@@ -96,14 +96,14 @@
                     <div @click.away="open = false" class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
                         <h3 class="text-lg font-semibold mb-4">
                             Apply for {{$job->title}}
-                            <form enctype="multipart/form-data" action="" method="post">
+                            <form enctype="multipart/form-data" action="{{route('applicant.store', $job->id)}}" method="post">
                                 @csrf
                                 <x-inputs.text id="full_name" name="full_name" label="Full Name" :required="true" />
                                 <x-inputs.text id="contact_phone" name="contact_phone" label="Contact Phone" />
                                 <x-inputs.text id="contact_email" name="contact_email" label="Contact Email" :required="true" />
                                 <x-inputs.text-area id="message" name="message" label="Message" />
                                 <x-inputs.text id="location" name="location" label="Location" />
-                                <x-inputs.file id="cv_path" name="cv_path" label="Upload your CV (pdf)" :required="true" />
+                                <x-inputs.file id="cv" name="cv" label="Upload your CV (pdf)" :required="true" />
 
                                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Submit</button>
                                 <button @click="open = false" class="bg-gray-300 hover:bg-gray-400 text-black px-3 py-2 rounded-md">Cancel</button>
