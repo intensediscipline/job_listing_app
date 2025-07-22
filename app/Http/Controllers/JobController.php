@@ -164,4 +164,9 @@ class JobController extends Controller
 
         return redirect()->route('jobs.index')->with('success', 'Job listing deleted successfully!');
     }
+
+    public function search(Request $request)
+    {
+
+    }
 }
