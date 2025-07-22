@@ -12,6 +12,7 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GeocodeController;
 
 
 Route::get('/', function () {
@@ -40,3 +41,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/jobs/{job}/apply', [ApplicantController::class, 'store'])->name(name: 'applicant.store');
     Route::delete('/applicants/{applicant}', [ApplicantController::class, 'destroy'])->name(name: 'applicant.destroy');
 });
+
+Route::get('/geocode', [GeocodeController::class, 'geocode']);
