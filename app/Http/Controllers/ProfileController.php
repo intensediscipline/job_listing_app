@@ -24,6 +24,7 @@ class ProfileController extends Controller
         ]);
 
         $user->name = $validatedData['name'];
+
         $user->email = $validatedData['email'];
 
         // check for file
@@ -38,9 +39,9 @@ class ProfileController extends Controller
 
             // add path
             $user->profile_image = $path;
-
-            $user->save();
         }
+
+        $user->save();
 
         return redirect()->route("dashboard")->with("success", "You have successfully updated your profile!");
     }

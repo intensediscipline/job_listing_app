@@ -15,7 +15,7 @@
         @method('PUT')
 
         <x-inputs.text id="name" name="name" label="Name" value="{{$user->name}}"/>
-        <x-inputs.text id="email" name="email" label="Email" type="email" value="{{$user->email}}" />
+        <x-inputs.text id="email" name="email" label="Email Address" type="email" value="{{$user->email}}" />
         <x-inputs.file id="profile_image" name="profile_image" />
 
         <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 border-rounded focus:outline:none">Save</button>
