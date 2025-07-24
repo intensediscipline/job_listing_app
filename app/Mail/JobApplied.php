@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-
+use Illuminate\Mail\Mailables\Attachment;
 class JobApplied extends Mailable
 {
     use Queueable, SerializesModels;
@@ -53,6 +53,13 @@ class JobApplied extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        $attachments = [];
+        if ($this->application->cv_path) {
+            $attachments[] = Attachment::fromPath(storage_path('app/public/' . $this->application->cv_path))
+                ->as($this->application->cv_path)
+                ->withMime('application/pdf');
+        }
+
+        return $attachments;
     }
 }
